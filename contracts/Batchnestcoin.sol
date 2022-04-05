@@ -1,32 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Godhanded 
-Epic-Byte
-/
-Nestcoin-Manager
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Nestcoin-Manager/Batchnestcoin.sol
-@frankudoags
-frankudoags Changed to .sol
-Latest commit 57a9977 8 hours ago
- History
- 1 contributor
-32 lines (25 sloc)  1.11 KB
-   
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
@@ -59,16 +31,3 @@ contract NestToken is ERC20, Ownable {
         emit BatchRewards(_recipients, _amounts);
     }
 }
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
