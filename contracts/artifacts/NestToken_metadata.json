@@ -118,6 +118,44 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_burned",
+						"type": "uint256"
+					}
+				],
+				"name": "burnedToken",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "_recipients",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "singleAmount",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address[]",
@@ -150,7 +188,7 @@
 				],
 				"name": "SingleRewardmint",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -260,6 +298,30 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint8",
+						"name": "amount",
+						"type": "uint8"
+					}
+				],
+				"name": "destroy",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "spender",
 						"type": "address"
@@ -312,6 +374,24 @@
 				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_recipients",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "sameRewardMint",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -518,11 +598,11 @@
 			]
 		},
 		"contracts/Batchnestcoin.sol": {
-			"keccak256": "0x1119dc13cc6b5f609eaee9439638992fccb6e3e1c84e7e46fc5a7d0ec74e6e82",
+			"keccak256": "0x92752d40fae022c25f97065e89d7d2d73055a3cb3fbe11d54b4f8431092ecb2f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://55c30244139f9ef024ad1ff8f075ab6354bd0283d0a12d0bb93c229860fdfb30",
-				"dweb:/ipfs/QmSsEkYtzdcmU2aRGcB5N8hyE6Zh9ZSpcWNAnKH4zamCvN"
+				"bzz-raw://ead5d26ee3c8a2541fcfae428c4e47d01e0efcd533597dec674b3e47f2aada8f",
+				"dweb:/ipfs/QmbmP9PvkdETUwN5unjPszcRecMmeBtLGH64CgryAhrKXz"
 			]
 		}
 	},
