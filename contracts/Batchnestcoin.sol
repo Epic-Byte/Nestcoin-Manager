@@ -3,9 +3,10 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts@4.5.0/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts@4.5.0/access/Ownable.sol";
 //import "@openzeppelin/contracts@4.5.0/access/AccessControl.sol";
 
-contract NestToken is ERC20/*,AccessControl*/ {
+contract NestToken is ERC20, Ownable /*,AccessControl*/ {
 
    // States
    // bytes32 public constant NESTCOIN_ADMIN = keccak256("NESTCOIN_ADMIN");
@@ -17,7 +18,10 @@ contract NestToken is ERC20/*,AccessControl*/ {
        Roles[msg.sender]=true;
     }
     //map user to adminrole
-    mapping (address=>bool)private Roles;
+    mapping (address=>bool) private Roles;
+
+    // deadline at which function becomes private
+    uint256 deadline = block.timestamp + 5 days;
 
     //checkes that users admin role is true
     modifier onlyAdmin{
@@ -32,9 +36,11 @@ contract NestToken is ERC20/*,AccessControl*/ {
     event singleAmount(address [] _recipients, uint256 _amount);
     event burnedToken (address _addr, uint256 _burned);
 
-   
     //Reward single customer
-    function SingleRewardMint(address to, uint256 amount) public onlyAdmin {
+    function SingleRewardMint(address to, uint256 amount) public {
+        if(block.timestamp >= deadline) {
+            require(Roles[msg.sender] == true, 'Function is Restricted to only Admins');
+        }
          require(to != address(0),"invalid address");
         _mint(to, amount);
         emit SingleReward(to, amount);
@@ -68,7 +74,7 @@ contract NestToken is ERC20/*,AccessControl*/ {
     }
 
     //this burns excess tokens from total supply
-      function destroy(uint8 amount)public onlyAdmin returns(uint256 , string memory)
+      function destroy(uint8 amount)public onlyOwner returns(uint256 , string memory)
     {
         require(balanceOf(msg.sender) >= amount,"insufficient funds");
         _burn(msg.sender,amount);
@@ -77,17 +83,23 @@ contract NestToken is ERC20/*,AccessControl*/ {
     }
 
     //add an admin 
-    function addAdmin(address account)public onlyAdmin returns(bool)
+    function addAdmin(address account)public onlyOwner returns(bool)
     {
       Roles[account]=true;
       return true;
     }
 
     // remove an admin
-    function removeAdmin(address account)public onlyAdmin returns(bytes32)
+    function removeAdmin(address account)public onlyOwner returns(bytes32)
     {
       Roles[account]=false;
       return "removed";
+    }
+
+    function isAdmin(address account)
+      public onlyAdmin view returns (bool)
+    {
+      return Roles[account];
     }
 
 }
