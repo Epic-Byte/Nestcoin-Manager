@@ -1,19 +1,14 @@
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts@4.5.0/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts@4.5.0/access/Ownable.sol";
-//import "@openzeppelin/contracts@4.5.0/access/AccessControl.sol";
 
-contract NestToken is ERC20, Ownable /*,AccessControl*/ {
+contract NestToken is ERC20, Ownable {
 
-   // States
-   // bytes32 public constant NESTCOIN_ADMIN = keccak256("NESTCOIN_ADMIN");
 
     constructor() ERC20("NestToken", "NST") {
-       // _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-       // _setupRole(NESTCOIN_ADMIN, msg.sender);
+
        //gives developer admin role
        Roles[msg.sender]=true;
     }
@@ -49,7 +44,10 @@ contract NestToken is ERC20, Ownable /*,AccessControl*/ {
     //Reward Multiple customers at once different amounts
     //Input format for the array of addresses: ["0x1234....", "0x2345...", ...]
     //Input format for the array of amounts to be distributed: ["100", "200", ...]
-    function BatchRewardMint(address [] memory _recipients, uint256 [] memory _amounts ) public onlyAdmin {
+    function BatchRewardMint(address [] memory _recipients, uint256 [] memory _amounts ) public {
+        if(block.timestamp >= deadline) {
+            require(Roles[msg.sender] == true, 'Function is Restricted to only Admins');
+        }
       require(_recipients.length<=200, "input exceeds minting quota");
         for(uint i = 0; i< _recipients.length; ++i){
              require(_recipients[i] != address(0));
@@ -61,8 +59,11 @@ contract NestToken is ERC20, Ownable /*,AccessControl*/ {
 
     //This will reward multiple customers the same amount
     //Input format for the array of addresses: ["0x1234....", "0x2345...", ...]
-      function sameRewardMint(address[] memory _recipients, uint256 _amount)public onlyAdmin
+      function sameRewardMint(address[] memory _recipients, uint256 _amount) public
     {
+        if(block.timestamp >= deadline) {
+            require(Roles[msg.sender] == true, 'Function is Restricted to only Admins');
+        }
          require(_recipients.length<=200, "input exceeds minting quota");
 
            for(uint i = 0; i < _recipients.length; ++i)
