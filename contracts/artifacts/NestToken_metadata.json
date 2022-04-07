@@ -170,7 +170,7 @@
 				],
 				"name": "BatchRewardMint",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -188,7 +188,7 @@
 				],
 				"name": "SingleRewardmint",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -391,7 +391,7 @@
 				],
 				"name": "sameRewardMint",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -598,11 +598,11 @@
 			]
 		},
 		"contracts/Batchnestcoin.sol": {
-			"keccak256": "0x92752d40fae022c25f97065e89d7d2d73055a3cb3fbe11d54b4f8431092ecb2f",
+			"keccak256": "0xf60b3b8fc1017b64ce6b805f02d67ac832706395ab14b614c7c85da6b5727050",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ead5d26ee3c8a2541fcfae428c4e47d01e0efcd533597dec674b3e47f2aada8f",
-				"dweb:/ipfs/QmbmP9PvkdETUwN5unjPszcRecMmeBtLGH64CgryAhrKXz"
+				"bzz-raw://fc3b2e738f369fd44772fe9785811a4c15c316f4106ac6982cf9875a8b821579",
+				"dweb:/ipfs/QmTSnzmVctTAoHap9n7oTAf8ph2TAoYE1j88ybxeRC1LuK"
 			]
 		}
 	},
