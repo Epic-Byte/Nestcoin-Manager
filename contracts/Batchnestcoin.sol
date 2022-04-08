@@ -24,7 +24,7 @@ contract NestToken is ERC20, Ownable {
     /**
      * @notice time after which testing phase is complete and temporary access to functions is removed
      */
-    uint256 deadline = block.timestamp + 1 days;
+    uint256 deadline = block.timestamp + 2 days;
 
    /**
      * @notice modifier that restricts function access to only Admins 
